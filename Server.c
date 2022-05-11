@@ -18,14 +18,14 @@ int main (int argc, char *argv[]){
     server_address.sin_port = htons(5600);
     server_address.sin_addr.s_addr = inet_addr(argv[1]);
 
-	// Binding the socket and the port..
+    // Binding the socket and the port..
     bind(request_socket, (struct sockaddr *) &server_address, sizeof(server_address));
  
-	// Listen: create queue to store requests..
+    // Listen: create queue to store requests..
     listen(request_socket, 10);
 	
-	// Read, write operations..
-	char data[201];
+    // Read, write operations..
+    char data[201];
     int client_size, n;
     char str[100];
     time_t tick;
