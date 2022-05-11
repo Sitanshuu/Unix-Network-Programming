@@ -19,7 +19,7 @@ int main (int argc, char *argv[]){
     // Connect to the server..
     connect(net_socket, (struct sockaddr *) &server, sizeof(server));
     
-    // Read, write operations..
+    // Write, read operations..
     char data[200];
     int n;
     char buffer[5];
