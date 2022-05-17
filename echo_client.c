@@ -23,10 +23,12 @@ int main (int argc, char *argv[]){
     char data[200];
     int n;
     char buffer[5];
-    scanf("%s", buffer);
     
+    printf("Enter text: ");
+    scanf("%s", buffer);
     write(net_socket, buffer, strlen(buffer));
     n = recv(net_socket, data, 200, 0);
+    data[n] = '\0';
     printf("Reply from the server: %s\n", data);
     close(net_socket);
     
