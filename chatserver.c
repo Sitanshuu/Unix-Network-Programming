@@ -38,7 +38,6 @@ int main (int argc, char *argv[]){
 	    }
             close(response_socket);
     }
-    
     return 0;
 }
 
