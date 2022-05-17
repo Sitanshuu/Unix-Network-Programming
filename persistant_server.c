@@ -28,12 +28,14 @@ int main (int argc, char *argv[]){
 	    response_socket = accept(request_socket, (struct sockaddr *) &client, &client_size);
 	    while (1){
 		    n = recv(response_socket, data, 200, 0);
+		    if (n == 0){
+			    break;
+		    }
 	            data[n] = '\0';
                     write(response_socket, data, strlen(data));
 	    }
             close(response_socket);
     }
-    
     return 0;
 }
 
