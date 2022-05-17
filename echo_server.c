@@ -7,7 +7,7 @@
 int main (int argc, char *argv[]){
     
     // Creating a socket..
-    int request_socket, resonse_socket;
+    int request_socket, response_socket;
     request_socket= socket(AF_INET, SOCK_STREAM, 0);
     
     // Storing the details of the server which is going to get connected..
@@ -29,10 +29,9 @@ int main (int argc, char *argv[]){
     while (1){
         response_socket = accept(request_socket, (struct sockaddr *) &client, &client_size);
         n = recv(response_socket, data, 200, 0);
-        print(data);
+        data[n] = '\0';
         write(response_socket, data, strlen(data));
         close(response_socket);
-    }
-    
+    }   
     return 0;
 }
