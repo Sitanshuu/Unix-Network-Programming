@@ -36,10 +36,25 @@ int main (int argc, char *argv[]){
 	server.sin_addr.s_addr = htonl(INADDR_ANY);
 
 	int len = sizeof(struct sockaddr_in);
-	bind(request_socket, (struct sockaddr *)&server, sizeof(server));
-	getsockname(request_socket, (struct sockaddr *)&server, &len);
+	
+        if (bind(request_socket, (struct sockaddr *)&server, sizeof(server)) == 0){
+                printf("Socket binding successful !!\n");
+        }
+        else{
+                printf("Socket binding failed !!\n");
+                exit(0);
+        }
+	
+        getsockname(request_socket, (struct sockaddr *)&server, &len);
 	printf("After bind ephemeral port = %d\n", (int)ntohs(server.sin_port));
-	listen(request_socket, 5);
+	
+        if (listen(request_socket, 5) == 0){
+                printf("Buffer has been created in the server to accept request !!\n");
+        }
+        else{
+                printf("Listen failed !!\n");
+                exit(0);
+        }
 
 	char data[200];
 	char buffer[5];
