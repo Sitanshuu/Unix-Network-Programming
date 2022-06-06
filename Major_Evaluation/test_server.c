@@ -5,10 +5,14 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <string.h>
+#include <sys/wait.h>
 
 int request_socket, response_socket;
 void int_handel (int sig){
+	pid_t child_id;
+	child_id = wait(NULL);
         printf("\n Exit from server .....\n");
+        printf("The child is terminating with the child id: %d", child_id);
         close(response_socket);
 	close(request_socket);
         exit(0);
